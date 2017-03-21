@@ -1,0 +1,40 @@
+﻿﻿@model TLP.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrate</title>
+</head>
+<body>
+    <div> 
+        @using (Html.BeginForm("AddNewUser", "Login", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td>username: </td>
+                    <td>@Html.TextBoxFor(m => m.username)</td>
+                    <td><div style="color:red">@Html.ValidationMessageFor(x => x.username)</div></td>
+                </tr>
+                <tr>
+                    <td>password:</td>
+                    <td>@Html.PasswordFor(m => m.password)</td>
+                    <td><div style="color:red">@Html.ValidationMessageFor(x => x.password)</div></td>
+                </tr>
+                <tr>
+                    <td><input name="Submit" id="Submit1" type="submit" value="Reg" /></td>
+                </tr>
+            </table>
+            <p></p>
+            <p></p>
+            <input type="button" title="Back2login" value="Login" onclick="location.href='@Url.Action("Index", "Login", null)'" />
+
+        }
+    </div>
+</body>
+</html>
