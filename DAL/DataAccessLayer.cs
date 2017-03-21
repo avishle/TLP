@@ -14,8 +14,10 @@ namespace TLP.DAL
             base.OnModelCreating(modelBuilder);
             
             modelBuilder.Entity<User>().ToTable("tblUsers");
+            modelBuilder.Entity<Auction>().ToTable("tblAuctions");
         }
         
         public DbSet<User> Users { get; set; }
+        public DbSet<Auction> Auctions { get; set; }
     }
 }

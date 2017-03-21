@@ -1,4 +1,4 @@
-﻿
+﻿﻿@model TLP.Models.User
 @{
     Layout = null;
 }
@@ -12,7 +12,36 @@
 </head>
 <body>
     <div>
-        <div>Stam</div> 
+        <div></div> 
+        <p> Hello @Model.username</p>
+        <div id="status"> </div>
+        <label style="color:blue">available auctions </label>
+        <table id="AuctionTBL">
+            <tr>            
+                <td> Auction Name</td>
+                <td> DeadLine</td>
+                <td> Bid now!</td>
+            </tr>
+        </table>
+
     </div>
+    <script language="javascript">
+            $("#status").text("Loading");
+            $.get("GetAuctionsByJson", null, CreateTable);
+            $("#status").text("");
+
+            function CreateTable(auctions)
+            {
+                $("#AuctionTBL").find("tr:gt(0)").remove();
+                var tbl = $("#AuctionTBL")
+
+                for (k = 0; k < customers.length; k++)
+                    tbl.append("<tr>" +
+                                "<td>" + auctions[k].auctionname + "</td>" +
+                                "<td>" + auctions[k].deadline + "</td>" +
+                                "<td> <input id=" + auctions[k].a_id + " type='button' value='Buy now!' onclick='BidAuction(this.id)' /></td>" +
+                                "</tr>");
+                $("#status").text("");
+            }
 </body>
 </html>

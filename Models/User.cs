@@ -17,5 +17,10 @@ namespace TLP.Models
         public Int64 puzzle_t { get; set; }
         public Int64 puzzle_n { get; set; }
         public Int64 puzzle_key { get; set; }
+
+        public static implicit operator User(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
